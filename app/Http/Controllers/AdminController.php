@@ -10,8 +10,9 @@ class AdminController extends Controller
     public function admin()
     {
         $data=Todo::all();
+        // return $data;
         return view('admin.admin',['todo'=>$data]);
-        // return view();
+        
     }
     public function new(){
         return view('admin.new');
@@ -19,12 +20,20 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-        $data=$request->all();
-        Todo::create($data);
-
-       
-        // $status->save();
+        $image= $request->file('photo')->getClientOriginalExtension();
+        $filename = time().'.'.$image;
+        $request->photo->move('images/',$filename);
+        // $request->photo->move(public_path('images',$filename));
+        // dd($test);
+        $data=$request->todo;
         // return $data;
+
+        Todo::create([
+            'todo'=>$data,
+
+            'photo'=>$filename,
+        ]);
+
         return redirect('/admin');
 
         

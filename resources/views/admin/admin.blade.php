@@ -10,6 +10,7 @@
           <tr>
             <th scope="col">Sn</th>
             <th scope="col">Todo</th>
+            <th scope="col">Photo</th>
             <th scope="col">Operation</th>
  
           </tr>
@@ -20,6 +21,10 @@
             
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$t->todo}}</td>
+            <td>
+              
+              <img src="{{asset('/images/'.$t->photo)}}" width="100px" alt="Image">
+            </td>
             <td>
             <button class="btn btn-outline-dark"><a href="{{route('edit',$t->id)}}">Edit</a></button>  
             <button class="btn btn-warning"><a href="{{route('delete',$t->id)}}">Delete</a> </button>

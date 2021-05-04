@@ -10,6 +10,7 @@
               <tr>
                 <th scope="col">Sn</th>
                 <th scope="col">Todo</th>
+                <th scope="col">Photo</th>
         
      
               </tr>
@@ -20,6 +21,10 @@
                 
                 <th scope="row">{{$loop->iteration}}</th>
                 <td>{{$t->todo}}</td>
+                <td>
+                  <img src="{{asset('/images/'.$t->photo)}}" width="100px" alt="Image">
+
+                </td>
                </tr>
                @endforeach
             </tbody>
